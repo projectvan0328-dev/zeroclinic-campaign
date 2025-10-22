@@ -865,11 +865,6 @@
                         <div class="main-image">
                             <img src="./images/campaign-main.jpg" alt="캠페인 이미지">
                         </div>
-                        <div class="thumbnail-list">
-                            <div class="thumbnail active">
-                                <img src="./images/campaign-thumb.jpg" alt="썸네일">
-                            </div>
-                        </div>
                     </div>
 
                     <div class="campaign-info">
@@ -1075,6 +1070,157 @@
     <script>
         let isEditMode = false;
         let currentEditType = '';
+
+        // 페이지 로드 시 저장된 데이터 복원
+        window.addEventListener('DOMContentLoaded', function() {
+            loadSavedData();
+        });
+
+        // 저장된 데이터 불러오기
+        function loadSavedData() {
+            const savedData = localStorage.getItem('campaignData');
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    
+                    // 제목
+                    if (data.title) {
+                        document.getElementById('campaignTitle').textContent = data.title;
+                    }
+                    
+                    // 태그
+                    if (data.tags) {
+                        const tagGroup = document.getElementById('tagGroup');
+                        const editBtn = tagGroup.querySelector('.edit-btn');
+                        tagGroup.innerHTML = '';
+                        tagGroup.appendChild(editBtn);
+                        
+                        data.tags.forEach((tagText, index) => {
+                            if (tagText) {
+                                const tag = document.createElement('span');
+                                tag.className = index === 0 ? 'tag tag-receipt' : 'tag tag-review';
+                                tag.textContent = tagText;
+                                tagGroup.appendChild(tag);
+                            }
+                        });
+                    }
+                    
+                    // 캠페인 정보
+                    if (data.info) {
+                        if (data.info.count) document.getElementById('infoCount').textContent = data.info.count;
+                        if (data.info.provision) document.getElementById('infoProvision').textContent = data.info.provision;
+                        if (data.info.recruitPeriod) document.getElementById('infoRecruitPeriod').textContent = data.info.recruitPeriod;
+                        if (data.info.announceDate) document.getElementById('infoAnnounceDate').textContent = data.info.announceDate;
+                        if (data.info.reviewPeriod) document.getElementById('infoReviewPeriod').textContent = data.info.reviewPeriod;
+                        if (data.info.deadline) document.getElementById('infoDeadline').textContent = data.info.deadline;
+                    }
+                    
+                    // 버튼 링크
+                    if (data.buttonLink) {
+                        document.getElementById('infoButton').setAttribute('href', data.buttonLink);
+                    }
+                    
+                    // 제공내역 설명
+                    if (data.provisionDesc) {
+                        document.getElementById('provisionDesc').textContent = data.provisionDesc;
+                    }
+                    
+                    // 제공내역 목록
+                    if (data.provisionList) {
+                        const listContainer = document.getElementById('provisionList');
+                        const editBtn = listContainer.querySelector('.edit-btn');
+                        listContainer.innerHTML = '';
+                        listContainer.appendChild(editBtn);
+                        
+                        data.provisionList.forEach(item => {
+                            if (item) {
+                                const p = document.createElement('p');
+                                p.textContent = item;
+                                listContainer.appendChild(p);
+                            }
+                        });
+                    }
+                    
+                    // 가이드라인
+                    if (data.guideline1) {
+                        const section = document.getElementById('guideline1');
+                        if (section) {
+                            const h3 = section.querySelector('h3');
+                            const listContainer = section.querySelector('.list-items');
+                            
+                            if (h3 && data.guideline1.title) {
+                                h3.textContent = data.guideline1.title;
+                            }
+                            
+                            if (listContainer && data.guideline1.items) {
+                                listContainer.innerHTML = '';
+                                data.guideline1.items.forEach(item => {
+                                    if (item) {
+                                        const p = document.createElement('p');
+                                        p.textContent = item;
+                                        listContainer.appendChild(p);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                    
+                    if (data.guideline2) {
+                        const section = document.getElementById('guideline2');
+                        if (section) {
+                            const h3 = section.querySelector('h3');
+                            const listContainer = section.querySelector('.list-items');
+                            
+                            if (h3 && data.guideline2.title) {
+                                h3.textContent = data.guideline2.title;
+                            }
+                            
+                            if (listContainer && data.guideline2.items) {
+                                listContainer.innerHTML = '';
+                                data.guideline2.items.forEach(item => {
+                                    if (item) {
+                                        const p = document.createElement('p');
+                                        p.textContent = item;
+                                        listContainer.appendChild(p);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.error('데이터 로드 실패:', e);
+                }
+            }
+        }
+
+        // 현재 데이터를 localStorage에 저장
+        function saveCurrentData() {
+            const data = {
+                title: document.getElementById('campaignTitle').textContent,
+                tags: Array.from(document.querySelectorAll('#tagGroup .tag')).map(t => t.textContent),
+                info: {
+                    count: document.getElementById('infoCount').textContent,
+                    provision: document.getElementById('infoProvision').textContent,
+                    recruitPeriod: document.getElementById('infoRecruitPeriod').textContent,
+                    announceDate: document.getElementById('infoAnnounceDate').textContent,
+                    reviewPeriod: document.getElementById('infoReviewPeriod').textContent,
+                    deadline: document.getElementById('infoDeadline').textContent
+                },
+                buttonLink: document.getElementById('infoButton').getAttribute('href'),
+                provisionDesc: document.getElementById('provisionDesc').textContent,
+                provisionList: Array.from(document.querySelectorAll('#provisionList p')).map(p => p.textContent),
+                guideline1: {
+                    title: document.querySelector('#guideline1 h3')?.textContent || '',
+                    items: Array.from(document.querySelectorAll('#guideline1 .list-items p')).map(p => p.textContent)
+                },
+                guideline2: {
+                    title: document.querySelector('#guideline2 h3')?.textContent || '',
+                    items: Array.from(document.querySelectorAll('#guideline2 .list-items p')).map(p => p.textContent)
+                }
+            };
+            
+            localStorage.setItem('campaignData', JSON.stringify(data));
+        }
 
         function switchBranch(index, branchName) {
             const allTabs = document.querySelectorAll('.branch-tab');
@@ -1454,6 +1600,9 @@
             } else {
                 console.log('알 수 없는 타입:', currentEditType);
             }
+            
+            // 모든 변경사항을 localStorage에 저장
+            saveCurrentData();
             
             closeEditModal();
         }
