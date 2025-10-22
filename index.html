@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제로클리닉 지방분해주사 체험단 가이드 - 신사점</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 700;
+        }
+        
+        .subsection {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .subsection-title {
+            font-size: 1.3em;
+            color: #495057;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .subsection-title::before {
+            content: '✓';
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+        
+        .important {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .important-title {
+            color: #c53030;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .star {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .keyword {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 3px;
+            font-weight: 500;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        .info-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .warning-box {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .photo-item-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: '✓ ';
+            color: #48bb78;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .forbidden {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .forbidden li::before {
+            content: '✗ ';
+            color: #f56565;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        /* 사진 예시 섹션 */
+        .photo-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .photo-example-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .photo-example-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .photo-example-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+        
+        .photo-example-label {
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.05em;
+        }
+        
+        .photo-tips {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .photo-tips-title {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .photo-tips-title::before {
+            content: '💡';
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.95em;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.4em;
+            }
+            
+            .subsection-title {
+                font-size: 1.1em;
+            }
+            
+            .photo-examples {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="제로클리닉 로고">
+            </div>
+            <h1>🏥 제로클리닉 지방분해주사 체험단 가이드</h1>
+            <div class="subtitle">신사점 체험단 완벽 가이드</div>
+        </div>
+        
+        <div class="content">
+            <div class="alert-box">
+                <span class="star">★★★</span> 신사점 체험단은 담당자 배경 가이드가 아닌 해당 가이드를 참고하여 작성해주세요! <span class="star">★★★</span>
+            </div>
+            
+            <!-- 개요 섹션 -->
+            <div class="section">
+                <h2 class="section-title">📋 체험단 진행 개요</h2>
+                
+                <div class="highlight">
+                    <strong>총 5회차 진행</strong> - 각 회차별 후기 필수 (이전 후기 업로드 후 다음 회차 진행 가능)
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>회차</th>
+                            <th>후기 플랫폼</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1~4회차</strong></td>
+                            <td>네이버 블로그 후기</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5회차</strong></td>
+                            <td>제로클리닉 공식 카페 후기</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="info-box">
+                    <strong>📸 사진 전달 필수</strong><br>
+                    • 워터마크 제거 필수<br>
+                    • 블로그/카페 업로드 사진 전부 담당자에게 전달<br>
+                    • 블로그/카페 발행 링크와 함께 전달
+                </div>
+            </div>
+            
+            <!-- 리뷰 작성 의무 -->
+            <div class="section">
+                <h2 class="section-title">⭐ 리뷰 작성 의무 (매우 중요!)</h2>
+                
+                <div class="important">
+                    <div class="important-title"><span class="star">★★</span> 1회차 리뷰</div>
+                    <strong>네이버 또는 구글 리뷰</strong> 작성 후 캡처하여 담당자 전달
+                </div>
+                
+                <div class="important">
+                    <div class="important-title"><span class="star">★★</span> 5회차 리뷰</div>
+                    <strong>강남언니 또는 바비톡 어플 리뷰</strong> 작성 후 캡처하여 담당자 전달
+                </div>
+            </div>
+            
+            <!-- 블로그 후기 가이드 -->
+            <div class="section">
+                <h2 class="section-title">✍️ 블로그 후기 작성 가이드 (1~4회차)</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">기본 요구사항</h3>
+                    <ul>
+                        <li><strong>글자 수:</strong> 공백 제외 <strong>1,600자 이상</strong></li>
+                        <li><strong>사진:</strong> 총 <strong>12장 이상</strong>
+                            <ul>
+                                <li>원내 사진 2장 필수</li>
+                                <li>시술부위 노출 사진 10장 이상</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">멍·붓기 사진 주의사항</h3>
+                    <div class="warning-box">
+                        <strong>⚠️ 중요:</strong> 멍·붓기 사진은 <strong>3장 이하</strong>로 제한<br>
+                        업로드 전 <strong>담당자 사전 컨펌 필수</strong> <span class="star">★</span>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">제목 키워드 <span class="star">★★</span></h3>
+                    <div class="highlight">
+                        <strong>필수 포함:</strong> 
+                        <span class="keyword">지역명</span> + 
+                        <span class="keyword">지방분해주사</span> + 
+                        <span class="keyword">제로클리닉 또는 제로컷</span> (1회 이상)
+                    </div>
+                    <p style="margin-top: 12px;"><strong>예시:</strong> "강남지방분해주사 제로클리닉 후기"</p>
+                    <p style="margin-top: 8px; color: #f56565;"><strong>⚠️ 주의:</strong> 각 회차마다 키워드 변경 (단순 1회차/2회차 표기 금지)</p>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">본문 키워드 반복 <span class="star">★</span></h3>
+                    <ul>
+                        <li>메인 키워드 <strong>6회 이상</strong> 반복</li>
+                        <li>필수 키워드: 
+                            <span class="keyword">지방분해주사</span>
+                            <span class="keyword">제로클리닉</span>
+                            <span class="keyword">제로컷</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">내용 구성</h3>
+                    <ul class="checklist">
+                        <li>시술을 알아본 계기</li>
+                        <li>상담 및 시술 과정</li>
+                        <li>사후관리와 관리 계획</li>
+                        <li>일상 속 체중관리 자연스럽게 언급</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">댓글 작성 시 주의</h3>
+                    <div class="info-box">
+                        병원명 언급 시 <strong>비밀댓글만 가능</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 공식 카페 후기 가이드 -->
+            <div class="section">
+                <h2 class="section-title">☕ 공식 카페 후기 작성 가이드 (5회차)</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">작성 위치 및 공개 설정</h3>
+                    <ul>
+                        <li><strong>위치:</strong> 제로클리닉 공식 카페 → <strong>리얼후기 카테고리</strong></li>
+                        <li><strong>공개 설정:</strong> <strong>멤버공개</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">기본 요구사항</h3>
+                    <ul>
+                        <li><strong>글자 수:</strong> 공백 제외 <strong>800자 이상</strong></li>
+                        <li><strong>제목 형식 <span class="star">★</span>:</strong> 
+                            <ul>
+                                <li>"~지방분해주사 제로클리닉"</li>
+                                <li>"~비만클리닉 제로클리닉"</li>
+                            </ul>
+                        </li>
+                        <li><strong>본문 <span class="star">★</span>:</strong> 
+                            <ul>
+                                <li>키워드 <strong>5회 이상</strong> 반복</li>
+                                <li><span class="keyword">제로클리닉</span> 1회 이상 포함</li>
+                            </ul>
+                        </li>
+                        <li><strong>사진 <span class="star">★</span>:</strong> 
+                            <ul>
+                                <li><strong>9장 이상</strong></li>
+                                <li>후 사진 사용 시 블로그에 사용했던 사진 제외</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 금지 표현 -->
+            <div class="section">
+                <h2 class="section-title">🚫 블로그/카페 작성 시 금지 표현</h2>
+                
+                <div class="warning-box">
+                    <strong style="color: #c53030; font-size: 1.15em;">절대 사용 금지 <span class="star">★★</span></strong>
+                    <ul class="forbidden" style="margin-top: 12px;">
+                        <li>"멍이 심하다", "출혈이 크다", "부작용 심하다" 등 <strong>부정적 표현</strong></li>
+                        <li>"무조건 살 빠진다" 등 <strong>과장 표현</strong></li>
+                        <li>다이어트 식품·보조제 언급 시 <strong>제품명은 모자이크 처리</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 사진 촬영 가이드 -->
+            <div class="section">
+                <h2 class="section-title">📷 사진 촬영 가이드</h2>
+                
+                <div class="alert-box">
+                    <span class="star">★★</span> 사진촬영 가이드라인 참고 필수!
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">제출 일정</h3>
+                    <div class="highlight">
+                        <strong>시술 전, 1~5회 매회차 이후 (시술 후 5일 이내 전송)</strong><br>
+                        → 총 6회 제공<br><br>
+                        <span style="color: #c53030;">⚠️ 1회 이상 사유 없이 사진 미제출 시, 모델 진행 중단될 수 있습니다.</span>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">사진 구성 📸</h3>
+                    <div class="photo-grid">
+                        <div class="photo-item">
+                            <div class="photo-item-title">각도별 사진</div>
+                            <div style="font-size: 2.2em; color: #667eea;">4장</div>
+                        </div>
+                        <div class="photo-item">
+                            <div class="photo-item-title">자유 셀카</div>
+                            <div style="font-size: 2.2em; color: #667eea;">6장</div>
+                        </div>
+                        <div class="photo-item">
+                            <div class="photo-item-title">총 제출</div>
+                            <div style="font-size: 2.2em; color: #48bb78; font-weight: bold;">10장</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 18px; text-align: center; color: #667eea; font-weight: 600; font-size: 1.05em;">
+                        → 마케팅실 (계정 아이디/전번)으로 보내주세요!
+                    </p>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">촬영 조건</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <strong style="color: #667eea; font-size: 1.1em;">📱 카메라</strong>
+                            <ul style="margin-top: 10px;">
+                                <li>보정 없는 기본 카메라 사용 권장</li>
+                                <li>얼굴/시술 부위가 선명하도록 촬영</li>
+                                <li>빛 번짐 또는 그림자 X</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="color: #667eea; font-size: 1.1em;">🖼️ 배경</strong>
+                            <ul style="margin-top: 10px;">
+                                <li>깔끔한 흰 벽 또는 밝은 야외</li>
+                                <li>불필요한 물건이나 사람이 보이지 않도록 주의</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-tips">
+                    <div class="photo-tips-title">촬영 꿀팁</div>
+                    <ul class="checklist">
+                        <li>시술 부위 잘 보이게 촬영 (자르기 X)</li>
+                        <li>후 사진은 메이크업/의상에 신경써주세요</li>
+                        <li>전체공개 모델은 얼굴 보이게 찍어주세요</li>
+                        <li>원내 직원이 찍은 사진은 사용 불가</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <strong>📢 2차 활용 동의</strong><br>
+                    사진은 홍보용 2차 활용 가능 (동의서 확인 필수)
+                </div>
+            </div>
+            
+            <!-- 부위별 촬영 예시 -->
+            <div class="section">
+                <h2 class="section-title">📐 부위별 촬영 가이드 & 예시</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">촬영 구성</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: white; padding: 20px; border-radius: 10px; border: 2px solid #e0e0e0;">
+                            <h4 style="color: #667eea; margin-bottom: 12px; font-size: 1.1em;">🔸 복부 / 하체</h4>
+                            <ul>
+                                <li>시술부위 각도별 사진 <strong>4장</strong></li>
+                                <li>자유 포즈 사진 <strong>6장</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: white; padding: 20px; border-radius: 10px; border: 2px solid #e0e0e0;">
+                            <h4 style="color: #667eea; margin-bottom: 12px; font-size: 1.1em;">🔸 얼굴 / 팔뚝</h4>
+                            <ul>
+                                <li>시술부위 각도별 사진 <strong>5장</strong></li>
+                                <li>자유 포즈 사진 <strong>5장</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="font-size: 1.4em; color: #495057; margin-bottom: 20px; font-weight: 600;">
+                        📸 촬영 예시 사진
+                    </h3>
+                    
+                    <div class="photo-examples">
+                        <div class="photo-example-card">
+                            <img src="images/slide1_img13.jpg" alt="복부 촬영 예시" class="photo-example-image">
+                            <div class="photo-example-label">복부 촬영 예시</div>
+                        </div>
+                        
+                        <div class="photo-example-card">
+                            <img src="images/slide1_img14.jpg" alt="하체 촬영 예시" class="photo-example-image">
+                            <div class="photo-example-label">하체 촬영 예시</div>
+                        </div>
+                        
+                        <div class="photo-example-card">
+                            <img src="images/slide2_img0.jpg" alt="얼굴 촬영 예시 1" class="photo-example-image">
+                            <div class="photo-example-label">얼굴 촬영 예시</div>
+                        </div>
+                        
+                        <div class="photo-example-card">
+                            <img src="images/slide2_img18.jpg" alt="팔뚝 촬영 예시" class="photo-example-image">
+                            <div class="photo-example-label">팔뚝 촬영 예시</div>
+                        </div>
+                    </div>
+                    
+                    <div class="warning-box" style="margin-top: 25px;">
+                        <strong>⚠️ 주의사항:</strong> 위 사진들은 예시일 뿐이며, <strong>원내 촬영 사진은 사용 불가</strong>합니다.
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="footer">
+            <div class="logo" style="width: 80px; height: 80px; margin: 0 auto 15px;">
+                <img src="images/logo.jpg" alt="제로클리닉 로고">
+            </div>
+            <p><strong>제로클리닉 신사점 체험단 가이드</strong></p>
+            <p style="margin-top: 8px;">궁금한 사항은 담당자에게 문의해주세요.</p>
+            <p style="margin-top: 15px; font-size: 0.85em; opacity: 0.7;">
+                © 2025 ZERO CLINIC. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
