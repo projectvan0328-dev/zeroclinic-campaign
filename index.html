@@ -257,17 +257,104 @@
             margin-top: 25px;
         }
         
+        .photo-example-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* 이미지 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: translateY(-50%) scale(0.8); }
+            to { transform: translateY(-50%) scale(1); }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.3s;
+            line-height: 1;
+            user-select: none;
+        }
+        
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #bbb;
+        }
+        
+        .modal-caption {
+            text-align: center;
+            color: #ccc;
+            padding: 15px;
+            font-size: 1.1em;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
         .photo-example-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
         
         .photo-example-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .photo-example-card:hover::after {
+            content: '🔍 클릭하여 확대';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(155, 127, 196, 0.95);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95em;
+            white-space: nowrap;
+            pointer-events: none;
+            animation: fadeIn 0.3s;
         }
         
         .photo-example-image {
@@ -486,6 +573,29 @@
             
             .photo-example-image {
                 height: 200px;
+            }
+            
+            /* 모바일 모달 최적화 */
+            .modal-content {
+                max-width: 95%;
+                max-height: 85%;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 20px;
+                font-size: 40px;
+            }
+            
+            .modal-caption {
+                font-size: 0.9em;
+                padding: 10px;
+                bottom: 10px;
+            }
+            
+            .photo-example-card:hover::after {
+                font-size: 0.85em;
+                padding: 10px 16px;
             }
         }
         
@@ -788,24 +898,24 @@
                     </h3>
                     
                     <div class="photo-examples" style="grid-template-columns: repeat(2, 1fr);">
-                        <div class="photo-example-card">
+                        <div class="photo-example-card" onclick="openModal('images/slide1_img13.jpg')" style="cursor: pointer;">
                             <img src="images/slide1_img13.jpg" alt="복부 촬영 예시" class="photo-example-image">
-                            <div class="photo-example-label">복부 촬영 예시</div>
+                            <div class="photo-example-label">복부 촬영 예시 - 자유 포즈 사진 예시</div>
                         </div>
                         
-                        <div class="photo-example-card">
+                        <div class="photo-example-card" onclick="openModal('images/slide1_img14.jpg')" style="cursor: pointer;">
                             <img src="images/slide1_img14.jpg" alt="하체 촬영 예시" class="photo-example-image">
-                            <div class="photo-example-label">하체 촬영 예시</div>
+                            <div class="photo-example-label">하체 촬영 예시 - 자유 포즈 사진 예시</div>
                         </div>
                         
-                        <div class="photo-example-card">
+                        <div class="photo-example-card" onclick="openModal('images/slide2_img18.jpg')" style="cursor: pointer;">
                             <img src="images/slide2_img18.jpg" alt="팔뚝 촬영 예시" class="photo-example-image">
-                            <div class="photo-example-label">팔뚝 촬영 예시</div>
+                            <div class="photo-example-label">팔뚝 촬영 예시 - 자유 포즈 사진 예시</div>
                         </div>
                         
-                        <div class="photo-example-card">
+                        <div class="photo-example-card" onclick="openModal('images/slide2_img0.jpg')" style="cursor: pointer;">
                             <img src="images/slide2_img0.jpg" alt="얼굴 촬영 예시" class="photo-example-image">
-                            <div class="photo-example-label">얼굴 촬영 예시</div>
+                            <div class="photo-example-label">얼굴 촬영 예시 - 자유 포즈 사진 예시</div>
                         </div>
                     </div>
                     
@@ -826,5 +936,49 @@
             </p>
         </div>
     </div>
+    
+    <!-- 이미지 확대 모달 -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+    
+    <script>
+        // 모달 열기
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const caption = document.getElementById('modalCaption');
+            
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            
+            // 이미지 alt 텍스트를 캡션으로 사용
+            const imgElement = document.querySelector(`img[src="${imageSrc}"]`);
+            if (imgElement) {
+                caption.textContent = imgElement.alt;
+            }
+            
+            // body 스크롤 방지
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 모달 닫기
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            
+            // body 스크롤 복원
+            document.body.style.overflow = 'auto';
+        }
+        
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
